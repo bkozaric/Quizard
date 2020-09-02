@@ -1,3 +1,153 @@
+html,
+body,
+div#root {
+  height: 100%;
+  background-color: #395c8a;
+  color: white
+}
+
 .App {
   text-align: center;
+}
+
+div.container {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  margin: 20px auto;
+  align-items: center;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+nav {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 2em;
+  background-color: rgb(15, 33, 58);
+
+}
+
+nav li {
+  height: 80px;
+  padding: 0px;
+}
+
+nav a {
+  display: flex;
+  text-align: center;
+  color: white;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.1s ease-in-out;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+
+}
+
+nav a:hover {
+  transform: translateY(-2px);
+  transition: 0.1s ease-in-out;
+  text-shadow: 0px 3px 2px rgba(155, 155, 155, 0.48);
+  background-color: rgb(7, 27, 54);
+}
+
+div.input-row-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  margin: 5px 0px;
+  position: relative;
+}
+
+div.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 30px auto;
+  padding: 20px 0;
+  border: 1px solid black;
+  width: 50%;
+  min-width: 350px;
+  max-width: 450px;
+  border-radius: 16px;
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
+  background-color: rgb(17, 39, 71);
+}
+
+div.form-container h2 {
+  font-size: 2em;
+  margin-top: 0px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  border-bottom: 2px solid rgb(255, 255, 255);
+  padding: 0px 25px;
+}
+
+div.form-container form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-input-error {
+  border: 1px solid red;
+  background-color: rgb(255, 245, 245);
+}
+
+div.input-row-container span {
+  margin-bottom: 5px;
+}
+
+.form-release-input {
+  border: 1px solid gray;
+  padding: 7px;
+  border-radius: 10px;
+  text-align: left;
+  margin-top: 0px;
+  min-width: 70%;
+  font-size: 1.3em;
+}
+
+div.form-container button {
+  transition: 0.1s ease-in-out;
+  padding: 8px 20px;
+  color: rgb(6, 25, 48);
+  border: none;
+  border-radius: 15px;
+  text-transform: uppercase;
+  font-size: 1.3em;
+  background-color: #e4e4ff;
+}
+
+div.form-container button:hover {
+  box-shadow: 0px 0px 8px 2px rgba(247, 247, 247, 0.23);
+  transition: 0.2s ease-in-out;
+  padding: 8px 25px;
+}
+
+
+
+input:focus,
+textarea:focus {
+  outline: 0;
+  background-color: rgb(236, 255, 232);
+  transition: all 300ms ease-in-out;
+}
+
+button:focus {
+  outline: 0;
+  transition: all 300ms ease-in-out;
 }
