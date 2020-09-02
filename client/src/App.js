@@ -5,10 +5,12 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import ManageQuiz from "./components/ManageQuiz/ManageQuiz"
 import CreateQuiz from "./components/CreateQuiz/CreateQuiz"
+import Navigation from "./components/Navigation/Navigation"
 
 function App() {
   return (
     <div className="App">
+      <Navigation />
       <Router>
         <Switch>
           <Route exact path="/" component={ManageQuiz}></Route>

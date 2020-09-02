@@ -11,6 +11,38 @@ const pool = mysql.createPool({
 
 let db = {};
 
+db.deleteQuiz = (id) => {
+    return new Promise((resolve, reject) => {
+        pool.query(`DELETE FROM quizes WHERE id=${id}`,
+            (err, results) => {
+                if (err) {
+                    return reject(err);
+                }
+                return resolve(results);
+            })
+    })
+}
+
+
+db.fetchQuizes = () => {
+    return new Promise((resolve, reject) => {
+        pool.query(`SELECT
+                        q.id AS quizId,
+                        q.title AS quizTitle,
+                        q2.id AS questionId,
+                        q2.question AS question
+                    FROM quizes q
+                        JOIN questions q2 on q.id = q2.quizId;`,
+            (err, results) => {
+                if (err) {
+                    return reject(err);
+                }
+                return resolve(results);
+            })
+    })
+}
+
+
 db.createQuiz = (title) => {
     return new Promise((resolve, reject) => {
         pool.query(`INSERT INTO quizes (title) VALUES ('${title}')`,

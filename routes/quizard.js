@@ -6,8 +6,8 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
     try {
-        //const results = await db.fetchReleases();
-        res.status(200).json({ message: "Hello world" })
+        const results = await db.fetchQuizes();
+        res.status(200).json(results)
     }
     catch (err) {
         res.sendStatus(500);
@@ -31,6 +31,16 @@ router.post("/createquiz/", async (req, res) => {
     }
     catch (err) {
         console.log(err);
+        res.sendStatus(500);
+    }
+})
+
+router.delete("/delete/:id", async (req, res) => {
+    try {
+        const results = await db.deleteQuiz(req.params.id);
+        res.status(200).json({ success: results.affectedRows && 1 });
+    }
+    catch (err) {
         res.sendStatus(500);
     }
 })
