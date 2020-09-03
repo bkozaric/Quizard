@@ -14,6 +14,27 @@ router.get("/", async (req, res) => {
     }
 })
 
+router.get("/iscorrect/:aid", async (req, res) => {
+    try {
+        const results = await db.checkIfAnswerCorrect(req.params.aid);
+        res.status(200).json(results)
+    }
+    catch (err) {
+        res.sendStatus(500);
+    }
+})
+
+
+router.get("/correctanswers/:qid", async (req, res) => {
+    try {
+        const results = await db.fetchCorrectAnswers(req.params.qid);
+        res.status(200).json(results)
+    }
+    catch (err) {
+        res.sendStatus(500);
+    }
+})
+
 router.get("/answers/:qid", async (req, res) => {
     try {
         const results = await db.fetchAnswers(req.params.qid);

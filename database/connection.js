@@ -11,9 +11,33 @@ const pool = mysql.createPool({
 
 let db = {};
 
+db.checkIfAnswerCorrect = (answerId) => {
+    return new Promise((resolve, reject) => {
+        pool.query(`SELECT isCorrect FROM answers WHERE id = ${answerId};`,
+            (err, results) => {
+                if (err) {
+                    return reject(err);
+                }
+                return resolve(results);
+            })
+    })
+}
+
+db.fetchCorrectAnswers = (quizId) => {
+    return new Promise((resolve, reject) => {
+        pool.query(`SELECT a.answer FROM answers a INNER JOIN questions q on a.questionId = q.id WHERE q.quizId = ${quizId} AND a.isCorrect = 1;`,
+            (err, results) => {
+                if (err) {
+                    return reject(err);
+                }
+                return resolve(results);
+            })
+    })
+}
+
 db.fetchAnswers = (questionId) => {
     return new Promise((resolve, reject) => {
-        pool.query(`SELECT * FROM answers WHERE questionId=${questionId};`,
+        pool.query(`SELECT id, answer FROM answers WHERE questionId=${questionId};`,
             (err, results) => {
                 if (err) {
                     return reject(err);
@@ -65,7 +89,6 @@ db.fetchQuizesQuestionCount = () => {
     })
 }
 
-
 db.fetchQuizes = () => {
     return new Promise((resolve, reject) => {
         pool.query(`SELECT
@@ -83,7 +106,6 @@ db.fetchQuizes = () => {
             })
     })
 }
-
 
 db.createQuiz = (title) => {
     return new Promise((resolve, reject) => {

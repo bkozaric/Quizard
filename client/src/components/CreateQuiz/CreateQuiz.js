@@ -68,12 +68,9 @@ const CreateQuiz = () => {
                 body: JSON.stringify(body)
             }).then(answer => answer.json())
                 .then(data => {
-                    /*
-                    setSuccess(data.success);
                     if (data.success === 1) {
                         window.location.href = "/";
                     }
-                    */
                 });
         }
         catch (err) {
