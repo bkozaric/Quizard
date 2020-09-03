@@ -25,7 +25,7 @@ db.checkIfAnswerCorrect = (answerId) => {
 
 db.fetchCorrectAnswers = (quizId) => {
     return new Promise((resolve, reject) => {
-        pool.query(`SELECT a.answer FROM answers a INNER JOIN questions q on a.questionId = q.id WHERE q.quizId = ${quizId} AND a.isCorrect = 1;`,
+        pool.query(`SELECT a.answer FROM answers a INNER JOIN questions q on a.questionId = q.id WHERE q.quizId = ${quizId} AND a.isCorrect = 1 ORDER BY a.questionId;`,
             (err, results) => {
                 if (err) {
                     return reject(err);
