@@ -14,6 +14,36 @@ router.get("/", async (req, res) => {
     }
 })
 
+router.get("/answers/:qid", async (req, res) => {
+    try {
+        const results = await db.fetchAnswers(req.params.qid);
+        res.status(200).json(results)
+    }
+    catch (err) {
+        res.sendStatus(500);
+    }
+})
+
+router.get("/questions/:qid", async (req, res) => {
+    try {
+        const results = await db.fetchQuestions(req.params.qid);
+        res.status(200).json(results)
+    }
+    catch (err) {
+        res.sendStatus(500);
+    }
+})
+
+router.get("/quizes", async (req, res) => {
+    try {
+        const results = await db.fetchQuizesQuestionCount();
+        res.status(200).json(results)
+    }
+    catch (err) {
+        res.sendStatus(500);
+    }
+})
+
 router.post("/createquiz/", async (req, res) => {
     try {
         const { name, questions } = req.body;

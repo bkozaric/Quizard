@@ -25,7 +25,7 @@ const PickQuiz = () => {
     }, [])
     return (
         <div className="container">
-            {quizes.map((q, index) => <Quiz key={index} title={q.quizTitle} qcount={q.questionCount} />)}
+            {quizes.map((q, index) => <Quiz key={index} qid={q.quizId} title={q.quizTitle} qcount={q.questionCount} />)}
         </div>
     )
 }
