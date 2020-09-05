@@ -36,7 +36,14 @@ div.quiz-manage-buttons div {
 
 div.quiz-manage-buttons div:hover {
     cursor: pointer;
-    background-color: #385886;
+}
+
+div.edit-quiz:hover {
+    background-color: rgba(23, 135, 163);
+}
+
+div.delete-quiz:hover {
+    background-color: tomato;
 }
 
 div.edit-quiz {
@@ -44,7 +51,7 @@ div.edit-quiz {
 }
 
 div.delete-quiz {
-    border: 3px solid rgba(168, 22, 22, 0.637);
+    border: 3px solid tomato;
 }
 
 

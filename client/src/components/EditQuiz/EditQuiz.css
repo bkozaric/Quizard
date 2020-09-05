@@ -1,0 +1,35 @@
+td.td-edit-question {
+    text-align: left;
+}
+
+table.table-edit-question {
+    width: 90%;
+}
+
+td.td-delete-question-button {
+    color: tomato;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+td.td-edit-question-button {
+    color: teal;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+td.td-delete-question-button:hover>* {
+    transform: translateY(-3px);
+    transition: all 0.15s ease-in-out;
+}
+
+td.td-edit-question-button:hover>* {
+    transform: translateY(-3px);
+    transition: all 0.15s ease-in-out;
+}
+
+
+
+tr.tr-edit-question td {
+    padding: 10px 0px;
+}

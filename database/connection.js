@@ -59,6 +59,18 @@ db.fetchQuestions = (quizId) => {
     })
 }
 
+db.deleteQuestion = (id) => {
+    return new Promise((resolve, reject) => {
+        pool.query(`DELETE FROM questions WHERE id=${id}`,
+            (err, results) => {
+                if (err) {
+                    return reject(err);
+                }
+                return resolve(results);
+            })
+    })
+}
+
 db.deleteQuiz = (id) => {
     return new Promise((resolve, reject) => {
         pool.query(`DELETE FROM quizes WHERE id=${id}`,
@@ -98,6 +110,18 @@ db.fetchQuizes = () => {
                         q2.question AS question
                     FROM quizes q
                         JOIN questions q2 on q.id = q2.quizId;`,
+            (err, results) => {
+                if (err) {
+                    return reject(err);
+                }
+                return resolve(results);
+            })
+    })
+}
+
+db.fetchQuizName = (quizId) => {
+    return new Promise((resolve, reject) => {
+        pool.query(`SELECT title FROM quizes WHERE id = ${quizId}`,
             (err, results) => {
                 if (err) {
                     return reject(err);

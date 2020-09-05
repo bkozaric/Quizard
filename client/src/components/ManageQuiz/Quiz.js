@@ -27,7 +27,7 @@ const Quiz = (props) => {
             <h1 className="quiz-manager-title">{props.title}</h1>
             {props.questions.map((q, index) => <p key={index} className="quiz-manager-question">{index + 1}. {q}</p>)}
             <div className="quiz-manage-buttons">
-                <div className="edit-quiz">Edit</div>
+                <div onClick={() => window.location.href = "/editquiz/" + props.id} className="edit-quiz">Edit</div>
                 <div onClick={() => deleteQuiz()} className="delete-quiz">Delete</div>
             </div>
             {startDelete && <p className="delete-message-confirm">Are you sure you want to delete this quiz?<br />Press 'DELETE' again to confirm.</p>}
