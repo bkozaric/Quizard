@@ -7,22 +7,29 @@ p.input-label {
     font-size: 1.1em;
 }
 
-p.added-answer {
+div.added-answer {
     border: 1px solid white;
     margin: 2px 0px;
-    padding: 10px 0px;
+
     width: 80%;
     border-radius: 10px;
+    position: relative;
+    cursor: pointer;
 }
 
-p.correct-answer {
+div.correct-answer {
     border: 1px solid green;
     font-weight: 700;
     width: 85%;
 }
 
-p.added-answer:hover {
+div.added-answer:hover {
     background-color: #122d54;
+}
+
+div.added-answer> :first-child {
+    height: 100%;
+    padding: 10px 0px;
 }
 
 p.quiz-title {
@@ -45,4 +52,18 @@ p.quiz-question {
     width: 100%;
     border-bottom: 1px dashed white;
     background-color: #122d54;
+}
+
+div.remove-answer {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #12315d;
+    align-items: center;
+    border-radius: 0px 10px 10px 0px;
+    width: 30px;
+    color: tomato;
 }

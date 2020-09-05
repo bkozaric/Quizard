@@ -10,10 +10,10 @@ const Quiz = (props) => {
     }
 
     return (
-        <div className="quiz-pick-container">
+        <div className="quiz-pick-container" onClick={() => takeQuiz()}>
             <h2 className="quiz-pick-title">{props.title}</h2>
             <p className="quiz-pick-question-count">Question count: {props.qcount}</p>
-            <div className="quiz-pick-button" onClick={() => takeQuiz()}><FontAwesomeIcon icon={faAngleDoubleRight} /></div>
+            <div className="quiz-pick-button"><FontAwesomeIcon icon={faAngleDoubleRight} /></div>
         </div>
     )
 }

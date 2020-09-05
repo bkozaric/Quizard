@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react'
 
 import "./CreateQuiz.css"
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
+
 const CreateQuiz = () => {
 
     const [questions, setQuestions] = useState([])
@@ -27,8 +30,19 @@ const CreateQuiz = () => {
     }
 
     const addAnswer = () => {
-        setAnswersTemp([...answersTemp, formData.quizAnswer]);
-        setFormData({ ...formData, quizAnswer: "" })
+        if (!answersTemp.includes(formData.quizAnswer)) {
+            setAnswersTemp([...answersTemp, formData.quizAnswer]);
+            setFormData({ ...formData, quizAnswer: "" })
+        }
+    }
+
+    const removeAnswer = (answer) => {
+        if (answersTemp.indexOf(answer) < correctAnswer) {
+            setCorrectAnswer(prevVal => prevVal - 1);
+        }
+        let newAnswers = answersTemp;
+        newAnswers.splice(newAnswers.indexOf(answer), 1)
+        setAnswersTemp([...newAnswers]);
     }
 
     const newQuestion = () => {
@@ -52,8 +66,11 @@ const CreateQuiz = () => {
     }
 
     useEffect(() => {
-        console.log(questions);
-    }, [questions])
+        if (correctAnswer >= answersTemp.length) {
+            setCorrectAnswer(0);
+        }
+    }, [answersTemp])
+
 
     const createQuiz = async (e) => {
         e.preventDefault();
@@ -134,7 +151,9 @@ const CreateQuiz = () => {
                     <h2>CREATE QUIZ</h2>
                     <p className="quiz-title">{quizName}</p>
                     <p className="quiz-question">{questions.length + 1}. {formData.quizQuestion}</p>
-                    {answersTemp.map((a, index) => <p onClick={() => setCorrectAnswer(index)} key={index} className={correctAnswer === index ? "added-answer correct-answer" : "added-answer"}>{a}</p>)}
+                    {answersTemp.map((a, index) => <div key={index} className={correctAnswer === index ? "added-answer correct-answer" : "added-answer"}>
+                        <div onClick={() => setCorrectAnswer(index)}>{a}</div>
+                        <div className="remove-answer" onClick={() => removeAnswer(a)}><FontAwesomeIcon icon={faTrash} /></div></div>)}
                     <form onSubmit={createQuiz}>
                         <div className="input-row-container">
                             <p className="input-label">{answersTemp.length === 0 ? "Enter an answer" : "Add another answer"}</p>
